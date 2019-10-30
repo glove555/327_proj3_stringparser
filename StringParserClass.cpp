@@ -32,8 +32,10 @@ using namespace KP_StringParserClass;
 	//SUCCESS
 	//ERROR_TAGS_NULL if either pStart or pEnd is null
 	int StringParserClass::setTags(const char *pStart, const char *pEnd) {
+		if (pStart == NULL || pEnd == NULL){
+			return ERROR_TAGS_NULL;
+		}
 		return SUCCESS;
-
 	}
 
 	//First clears myVector
@@ -45,6 +47,13 @@ using namespace KP_StringParserClass;
 	//ERROR_DATA_NULL pDataToSearchThru is null
 	int StringParserClass::getDataBetweenTags(char *pDataToSearchThru,
 			std::vector<std::string> &myVector) {
+		if (pStartTag == NULL || pEndTag == NULL){
+			return ERROR_TAGS_NULL;
+		}
+		if(pDataToSearchThru == NULL){
+			return ERROR_DATA_NULL;
+		}
+		myVector.clear();
 		return SUCCESS;
 	}
 
