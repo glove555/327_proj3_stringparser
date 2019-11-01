@@ -86,38 +86,37 @@ int StringParserClass::getDataBetweenTags(char *pDataToSearchThru,
 	while (findTag(data, begin, end) == SUCCESS) {
 		//new copy for start look at first part of how to make a copy
 		int startTlength = strlen(pStartTag);
-		data = strstr(data,pStartTag);
+		data = strstr(data, pStartTag);
 		//need to avoid exceptions of string lengths at start
-		if (!data){
+		if (!data) {
 			break;
 		}
 		//length of data
-		data = data + (startTlength*sizeof(char));
-		end = strstr(data,pEndTag);
+		data = data + (startTlength * sizeof(char));
+		end = strstr(data, pEndTag);
 
 		//need to avoid exceptions of string lengths at end
-		if(!end){
+		if (!end) {
 			break;
 		}
-		std::string str = std::string(data,end-data);
+		std::string str = std::string(data, end - data);
 		data = end + strlen(pEndTag);
 
 		myVector.push_back(str);
 
-		char* endOfStr(pDataToSearchThru);
+		char *endOfStr(pDataToSearchThru);
 		endOfStr += strlen(pDataToSearchThru);
-		if (data >= endOfStr){
+		if (data >= endOfStr) {
 			break;
 		}
-
 
 	}
 	return SUCCESS;
 }
 
 void StringParserClass::cleanup() {
-	delete[]pStartTag;
-	delete[]pEndTag;
+	delete[] pStartTag;
+	delete[] pEndTag;
 	areTagsSet = false;
 }
 
