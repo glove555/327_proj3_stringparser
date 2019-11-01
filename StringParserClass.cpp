@@ -116,6 +116,9 @@ int StringParserClass::getDataBetweenTags(char *pDataToSearchThru,
 }
 
 void StringParserClass::cleanup() {
+	delete[]pStartTag;
+	delete[]pEndTag;
+	areTagsSet = false;
 }
 
 //Searches a string starting at pStart for pTagToLookFor
@@ -134,9 +137,11 @@ int StringParserClass::findTag(char *pTagToLookFor, char *&pStart,
 	pEnd = strstr(pTagToLookFor, pEndTag);
 	return SUCCESS;
 
-	//if...
+	//FAIL if either Start or End are comparable to 0
 	if (pStart == 0 || pEnd == 0) {
 		return FAIL;
 	}
+
 }
 
+///Prof. Perkins, what I really want to know is why the test cases are My Little Pony
